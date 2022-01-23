@@ -5,14 +5,15 @@
 
 
 
-const loginForm = document.querySelector(".login-form");
-const submitBtn = document.querySelector(".submit");
+const loginForm = document.querySelector(".loginForm");
+const submitBtn = loginForm.querySelector("button");
 const inputUserName = document.querySelector(".inputName")
 const nameForm = document.querySelector(".name");
 
 function onSubmitBtn(event) {
   event.preventDefault();
   const userName = inputUserName.value;
+  console.log(userName);
   if (userName === '') {
     alert("이름을 입력하세요!");
     return;
@@ -31,6 +32,7 @@ function greetingName(userName) {
 const savedUserName = localStorage.getItem("name");
 if(savedUserName === null) {
   loginForm.addEventListener("submit", onSubmitBtn);
+  console.log("1");
 } else {
   greetingName(savedUserName);
 }

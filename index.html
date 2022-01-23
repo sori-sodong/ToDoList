@@ -11,44 +11,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"></head>
 <body>
   <div class="container">
+    <!-- 이름 입력 -->
+    <form class="loginForm">
+      <input type="text" class="inputName">
+      <button type="submit">확인</button>
+    </form>
+    <div class=name></div>
 
-    <div class="name">
-      <form class="login-form">
-        <input type="text" class="inputName"/>
-        <button type="submit">확인</button>
+    <!-- 시계 -->
+    <div class="whatTime">
+      <span class ="yearday"></span>
+      <span class ="clock"></span>
+    </div>
+
+    <!-- 할일 -->
+    <div class="toDoForm">
+      <form class="inputToDo">
+        <input type="text"> 
+        <button>추가</button>
       </form>
+      <div class="toDoList">
+        <ul></ul>
+      </div>
+    </div>
+
+    <!-- 배경 변환 버튼 -->
+    <div>
       <button class="colorChangeBtn">color</button>
     </div>
-    
-    <div class="main">
-      <div class="sub">
-        <div class="item whatTime">
-          <div class="randomImg">
-            <h3 class="yearday"></h3>
-            <h2 class="clock"></h2>
-          </div>
-        </div>
-  
-        <div class="item weather">
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      
-      <div class="item todo">
-        <div class="write">
-          <input type="text" />
-          <button type = "submit" class = "inputSubmitBtn">확인</button>
-        </div>  
-        <div class="list">
-          <ul>
-          </ul>
-        </div>
-      </div>
 
-      
+    <!-- 날씨 -->
+    <div class="weather">
+      <span></span>
+      <span></span>
     </div>
   </div>
+
   <script src="src/name.js"></script>
   <script src="src/backgroundcolor.js"></script>
   <script src="src/todo.js"></script>

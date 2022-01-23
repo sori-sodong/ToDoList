@@ -1,26 +1,18 @@
-const inputSubmitBtn = document.querySelector(".inputSubmitBtn");
-const todoForm = document.querySelector(".todo");
-const todo = document.querySelector(".write input");
+const toDoDiv = document.querySelector(".toDoForm");
+const toDoForm = document.querySelector(".inputToDo");
+const todoInput = toDoForm.querySelector("input");
+const inputSubmitBtn = toDoForm.querySelector("button");
+const toDoList = document.querySelector(".toDoList");
+
+// const todoForm = document.querySelector(".todo");
+// const todo = document.querySelector(".write input");
+
 const todoUl = document.querySelector("ul");
 
 let toDos=[];
   
 function saveToDos() {
   localStorage.setItem("todos", JSON.stringify(toDos));
-}
-
-
-
-function checkForm(event){
-  const checkConfirm = event.target;
-  const eraseSpan = checkConfirm.parentElement;
-  
-  
-  if(checkConfirm.checked === true) {
-    eraseSpan.style.textDecoration = "line-through";
-  } else {
-    eraseSpan.style.textDecoration = "none"
-  }
 }
 
 function removeList(event) {
@@ -33,39 +25,28 @@ function removeList(event) {
 function writeTodos(newToDo) {
   const li = document.createElement("li");
   li.id = newToDo.id;
-  const checkDone = document.createElement("input");
-  checkDone.type="checkbox";
-
+  
   const span = document.createElement("span");
   span.innerText=newToDo.text;
 
   const deleteBtn = document.createElement("button");
-  deleteBtn.innerText="delete";
+  deleteBtn.innerText="삭제";
 
-
-  li.appendChild(checkDone);
   li.appendChild(span);
   li.appendChild(deleteBtn);
-  todoUl.appendChild(li);
-  
-
-  checkDone.addEventListener("click", checkForm);  
-  let checkBox = checkForm;
-  newToDo.check=checkBox;
-
+  toDoList.appendChild(li);
 
   deleteBtn.addEventListener("click", removeList);
 }
 
 function inputToDo(event) {
   event.preventDefault();
-  const newTodo = todo.value;
-  const checkBox=false;
-  todo.value="";
+  const newTodo = todoInput.value;
+  todoInput.value="";
+  
   const newTodoObj = {
     text: newTodo,
     id: Date.now(),
-    check: checkBox
   };
   toDos.push(newTodoObj);
   writeTodos(newTodoObj);
@@ -83,4 +64,4 @@ if(savedToDos !== null) {
 }
 
 
-inputSubmitBtn.addEventListener("click", inputToDo);
+toDoForm.addEventListener("submit", inputToDo);
